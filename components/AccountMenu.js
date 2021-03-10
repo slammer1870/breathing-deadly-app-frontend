@@ -4,6 +4,7 @@ import CourseScroller from "../components/CourseScroller";
 import AuthContext from "../context/AuthContext";
 import ProfileAvatar from "../icons/ProfileAvatar";
 import { API_URL, fromImageToUrl } from "../utils/urls";
+import Logo from '../icons/Logo'
 
 const useOrders = (user, getToken) => {
   const [orders, setOrders] = useState([]);
@@ -43,9 +44,7 @@ const AccountMenu = ({ active, handleAccount }) => {
         <div className="flex justify-between">
           <Link href="/">
             <a onClick={handleAccount}>
-              <h1 className="text-2xl font-light">
-                <strong>Hook Grip</strong> Tech
-              </h1>
+              <Logo />
             </a>
           </Link>
 
