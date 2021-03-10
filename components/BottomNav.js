@@ -83,7 +83,7 @@ const BottomNav = ({ path }) => {
                                 />
                             </g>
                         </svg>
-                        <p className="text-white text-xs">Courses</p>
+                        <p className="text-white text-xs">Products</p>
                     </a>
                 </Link>
                 <Link href="/curriculums">
@@ -115,7 +115,7 @@ const BottomNav = ({ path }) => {
                                 />
                             </g>
                         </svg>
-                        <p className="text-white text-xs">Curriculums</p>
+                        <p className="text-white text-xs">Coaching</p>
                     </a>
                 </Link>
                 {/*<button href="#" onClick={sideMenuActive} className="z-20">
