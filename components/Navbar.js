@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import AuthContext from '../context/AuthContext';
 import Link from 'next/link';
+import Logo from '../icons/Logo'
 
 const Navbar = ({ handleAccount }) => {
     const { user } = useContext(AuthContext);
@@ -13,7 +14,7 @@ const Navbar = ({ handleAccount }) => {
         <div className="w-screen flex p-6 justify-between bg-white lg:pr-28">
             <Link href="/">
                 <a>
-                    <h1 className="text-2xl font-light"><strong>Hook Grip</strong> Tech</h1>
+                    <Logo />
                 </a>
             </Link>
             <div>
