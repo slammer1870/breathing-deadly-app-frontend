@@ -6,6 +6,7 @@ import ProfileAvatar from "../icons/ProfileAvatar";
 import { fromImageToUrl } from "../utils/urls";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
+import Logo from "../icons/Logo"
 
 const useOrders = (user, getToken) => {
   const [orders, setOrders] = useState([]);

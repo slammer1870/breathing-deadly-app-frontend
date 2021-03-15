@@ -1,4 +1,4 @@
-export default function ExecLogo() {
+export default function Logo() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="153.729" height="42.227" viewBox="0 0 307.457 84.453">
   <g id="BDLogo" transform="translate(-102.311 -213.529)">
