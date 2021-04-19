@@ -1,14 +1,16 @@
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import CourseScroller from "../components/CourseScroller";
+import CurriculumScroller from "../components/CurriculumScroller";
 import AuthContext from "../context/AuthContext";
 import ProfileAvatar from "../icons/ProfileAvatar";
 import { fromImageToUrl } from "../utils/urls";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import Logo from "../icons/Logo"
+import useOrders from '../lib/api'
 
-const useOrders = (user, getToken) => {
+/*const useOrders = (user, getToken) => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -39,7 +41,7 @@ const useOrders = (user, getToken) => {
     fetchOrders();
   }, [user]);
   return { orders, loading };
-};
+};*/
 
 const AccountMenu = ({ active, handleAccount }) => {
   const { user, logoutUser, getToken } = useContext(AuthContext);
@@ -48,7 +50,8 @@ const AccountMenu = ({ active, handleAccount }) => {
 
   if (user && active) {
     return (
-      <div className="w-screen h-screen fixed bg-white top-0 flex flex-col p-6 lg:pr-28">
+      <div className="w-screen h-screen fixed bg-white top-0 flex flex-col p-6 lg:pr-28 overflow-y-scroll">
+        <button onClick={handleAccount} className="lg:w-20 lg:h-screen lg:-left-0 lg:fixed"></button>
         <div className="flex justify-between">
           <Link href="/">
             <a onClick={handleAccount}>
@@ -104,15 +107,48 @@ const AccountMenu = ({ active, handleAccount }) => {
         <div>
           <h1 className="text-3xl mb-4">My Courses</h1>
           <div className="flex overflow-y-hidden right-0 gradient-mask-r-70%">
-            {loading && <div className="mr-4 h-60 items-center justify-center flex w-screen"><div className="flex flex-col items-center"><FontAwesomeIcon icon={faCircleNotch} size="6x" spin /><h2 className="text-4xl mt-4 animate-pulse">Loading</h2></div></div>}
-            {!loading &&
-              orders.map((order) => (
-                <div key={order.id} className="mr-4" onClick={handleAccount}>
-                  <CourseScroller course={order.course} />
+            {loading && (
+              <div className="mr-4 h-60 items-center justify-center flex w-screen">
+                <div className="flex flex-col items-center">
+                  <FontAwesomeIcon icon={faCircleNotch} size="6x" spin />
+                  <h2 className="text-4xl mt-4 animate-pulse">Loading</h2>
                 </div>
-              ))}
+              </div>
+            )}
+            {!loading &&
+              orders
+                .filter((order) => order.course != null && order.course.id)
+                .map((order) => (
+                  <div key={order.id} className="mr-4" onClick={handleAccount}>
+                    <CourseScroller course={order.course} />
+                  </div>
+                ))}
           </div>
           <h1 className="text-3xl my-4">My Curriculums</h1>
+          <div className="flex overflow-y-hidden right-0 gradient-mask-r-70%">
+            {loading && (
+              <div className="mr-4 h-60 items-center justify-center flex w-screen">
+                <div className="flex flex-col items-center">
+                  <FontAwesomeIcon icon={faCircleNotch} size="6x" spin />
+                  <h2 className="text-4xl mt-4 animate-pulse">Loading</h2>
+                </div>
+              </div>
+            )}
+            {!loading &&
+              orders
+                .filter(
+                  (order) => order.curriculum != null && order.curriculum.id
+                )
+                .map((curriculum) => (
+                  <div
+                    key={curriculum.id}
+                    className="mr-4"
+                    onClick={handleAccount}
+                  >
+                    <CurriculumScroller curriculum={curriculum.curriculum} />
+                  </div>
+                ))}
+          </div>
         </div>
       </div>
     );

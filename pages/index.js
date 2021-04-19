@@ -12,7 +12,9 @@ export default function Home() {
     loginUser(email);
   };
 
-  const router = useRouter();
+    console.log(user)
+
+    const router = useRouter();
 
   if (user) {
     router.push("/articles");

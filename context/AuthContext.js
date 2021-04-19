@@ -40,7 +40,9 @@ export const AuthProvider = (props) => {
                 setUser({ email });
 
                 const token = await getToken()
-                //console.log("token is ", token)
+            }
+            else{
+                router.push('/')
             }
         } catch (err) {
             console.error(err.message);
