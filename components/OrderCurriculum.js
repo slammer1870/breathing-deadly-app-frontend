@@ -171,7 +171,7 @@ const OrderCurriculum = ({ timeslots, active, handlerOrder }) => {
         </div>
       </div>
     );
-  } else return false;
+  } else return <h1>Loading...</h1>;
 };
 
 OrderCurriculum.propTypes = {
