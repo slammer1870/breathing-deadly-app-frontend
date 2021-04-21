@@ -58,12 +58,13 @@ const CurriculumGrid = ({ makeActive }) => {
               className="w-36 h-56 bg-gray-200 mr-4 mb-4"
             >
               <a href={`/curriculums/${curriculum.id}`}>
-                <div className="flex h-full w-full items-center justify-center overflow-hidden relative">
-                  <img
-                    alt={curriculum.title}
-                    src={fromImageToUrl(curriculum.thumbnail)}
-                    className="top-0 absolute"
-                  />
+                <div className="flex flex-col h-full w-full">
+                  <div className="flex h-20 w-full items-center justify-center overflow-hidden relative">
+                    <img
+                      alt={curriculum.title}
+                      src={fromImageToUrl(curriculum.thumbnail)}
+                    />
+                  </div>
                   <div className="p-2 flex flex-col justify-between">
                     <div>
                       <h1 className="text-xl mb-1">

@@ -1,6 +1,6 @@
 export const fromImageToUrl = (image) => {
     if (!image) {
-        return '/vercel.svg';
+        return '/lungs.svg';
     }
 
     if (image.url.indexOf('/') === 0) {

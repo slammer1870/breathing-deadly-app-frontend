@@ -3,7 +3,7 @@ import React from 'react';
 
 const Slider = ({ handleDecrement, categories, count, handleIncrement }) => {
     return (
-        <div className="flex flex-col p-6 justify-between w-screen bg-white max-w-screen-sm">
+        <div className="flex flex-col p-6 justify-between w-screen bg-white max-w-screen-sm mt-8">
             <div className="flex items-center justify-between">
                 <button onClick={handleDecrement}>
                     <svg
