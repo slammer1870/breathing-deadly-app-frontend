@@ -50,7 +50,7 @@ const Navbar = ({ handleAccount }) => {
                 <li>
                   {user ? (
                     <Link href="/articles">
-                      <button className="border mt-1 p-1 w-28">
+                      <button className="mt-1 p-1 w-28 bg-indigo-400 text-white text-center rounded font-light">
                         Dashboard
                       </button>
                     </Link>
@@ -60,7 +60,7 @@ const Navbar = ({ handleAccount }) => {
                         <button className="p-1 w-20 mt-1">Log In</button>
                       </Link>
                       <Link href="/signup">
-                        <button className="border p-1 w-20 mt-1 bg-indigo-400 text-white text-center rounded font-light">Sign Up</button>
+                        <button className="p-1 w-20 mt-1 bg-indigo-400 text-white text-center rounded font-light">Sign Up</button>
                       </Link>
                     </div>
                   )}
