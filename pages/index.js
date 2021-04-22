@@ -18,11 +18,64 @@ export default function Home() {
 
   const router = useRouter();
 
+  const testimonials = [
+    {
+      thumbnail: "/profile-pic.png",
+      review:
+        "“Breathing Deadly is like the digital equivalent of a mechanical ventilator.",
+      name: "Sam Mc Nally",
+      occupation: "Web Developer",
+    },
+    {
+      thumbnail: "/testimonial-photo1.png",
+      review:
+        "I was diagnosed with a herniated disc in my lower back. After months of excruciating pain I opted to have lower back surgery and began my road to recovery.",
+      name: "Nam Mc Sally",
+      occupation: "Sample Occupation",
+    },
+    {
+      thumbnail: "/testimonial-photo2.png",
+      review: "I like leaving reviews on things, thanks for reading.",
+      name: "Joeseph Bloggs",
+      occupation: "Professional Reviewer",
+    },
+  ];
+
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const [testimonial, setTestimonial] = useState(0);
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 150) {
+      // do your stuff here for left swipe
+      console.log("move right");
+      if (testimonial < testimonials.length - 1) {
+        setTestimonial((testimonial) => testimonial + 1);
+      } else setTestimonial(0);
+    }
+
+    if (touchStart - touchEnd < 150) {
+      // do your stuff here for right swipe
+      console.log("move left");
+      if (testimonial > 0) {
+        setTestimonial((testimonial) => testimonial - 1);
+      } else setTestimonial(testimonials.length - 1);
+    }
+  };
+
   return (
     <div className="">
       <section className="p-6">
-        <h1 className="text-5xl my-6 text-left">Breathing Deadly</h1>
-        <h3 className="text-2xl font-thin my-6">
+        <h1 className="text-5xl my-6 text-center">Breathing Deadly</h1>
+        <h3 className="text-2xl font-thin text-center mt-6 mb-10">
           Change your breathing to change your life
         </h3>
         <div className="bg-video bg-cover aspect-w-16 aspect-h-9 my-6">
@@ -75,12 +128,20 @@ export default function Home() {
         </div>
       </section>
       <section className="bg-purple-50 flex flex-col p-6">
-        <a className="bg-white text-center p-2 rounded mt-6 mb-4 text-3xl font-light">
-          Log In
-        </a>
-        <a className="bg-indigo-400 text-white text-center p-2 rounded mb-6 text-3xl font-light">
-          Sign Up
-        </a>
+        {user ? (
+          <a className="bg-indigo-400 text-white text-center p-2 rounded my-6 text-3xl font-light">
+            Dashboard
+          </a>
+        ) : (
+          <div className="flex flex-col">
+            <a className="bg-white text-center p-2 rounded mt-6 mb-4 text-3xl font-light">
+              Log In
+            </a>
+            <a className="bg-indigo-400 text-white text-center p-2 rounded mb-6 text-3xl font-light">
+              Sign Up
+            </a>
+          </div>
+        )}
       </section>
       <section>
         <div class="container px-5 py-16 mx-auto flex flex-wrap">
@@ -182,45 +243,56 @@ export default function Home() {
         <h3 className="text-4xl font-regular text-center my-8">
           A Word from our Clients
         </h3>
-        <div className="max-w-screen-xs flex flex-col items-center bg-white">
-          <div className="mx-auto absolute">
-            <Image
-              src="/profile-pic.png"
-              alt="Picture of the author"
-              width={160}
-              height={160}
-              className="rounded-full"
-            />
-          </div>
-          <div className="bg-indigo-50 p-6 mt-20">
-            <h3 className="text-2xl font-thin pt-20">
-              “Breathing Deadly is like the digital equivalent of a mechanical
-              ventilator.”
-            </h3>
-            <h3 className="text-2xl font-bold my-4">Sam Mc Nally</h3>
-            <h3 className="text-2xl font-light my-4">
-              Local Hero and Web Developer @ Here
-            </h3>
-          </div>
+        <div className="container relative w-full overflow-x-auto">
+          <button
+            onTouchStart={(touchStartEvent) =>
+              handleTouchStart(touchStartEvent)
+            }
+            onTouchMove={(touchMoveEvent) => handleTouchMove(touchMoveEvent)}
+            onTouchEnd={() => handleTouchEnd()}
+          >
+            <div className="flex flex-col bg-white m-4">
+              <div className="flex justify-center">
+                <Image
+                  src={testimonials[testimonial].thumbnail}
+                  width={160}
+                  height={160}
+                  className="rounded-full"
+                />
+              </div>
+              <div className="bg-indigo-50 p-6 -mt-20">
+                <h3 className="text-2xl font-thin pt-20">
+                  {testimonials[testimonial].review}
+                </h3>
+                <h3 className="text-2xl font-bold my-4">
+                  {testimonials[testimonial].name}
+                </h3>
+                <h3 className="text-2xl font-light my-4">
+                  {testimonials[testimonial].occupation}
+                </h3>
+              </div>
+            </div>
+          </button>
         </div>
         <div className="flex w-40 mx-auto justify-between mt-12 mb-6">
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
-            viewBox="0 0 22 22"
-          >
-            <g
-              id="Ellipse_7"
-              data-name="Ellipse 7"
-              fill="#707070"
-              stroke="#707070"
-              stroke-width="1"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
             >
-              <circle cx="11" cy="11" r="11" stroke="none" />
-              <circle cx="11" cy="11" r="10.5" fill="none" />
-            </g>
-          </svg><svg
+              <g
+                id="Ellipse_7"
+                data-name="Ellipse 7"
+                fill={`${testimonial == 0 ? "#707070" : "#fff"}`}
+                stroke="#707070"
+                stroke-width="1"
+              >
+                <circle cx="11" cy="11" r="11" stroke="none" />
+                <circle cx="11" cy="11" r="10.5" fill="none" />
+              </g>
+            </svg>
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             width="22"
             height="22"
@@ -229,7 +301,7 @@ export default function Home() {
             <g
               id="Ellipse_7"
               data-name="Ellipse 7"
-              fill="#fff"
+              fill={`${testimonial == 1 ? "#707070" : "#fff"}`}
               stroke="#707070"
               stroke-width="1"
             >
@@ -246,7 +318,7 @@ export default function Home() {
             <g
               id="Ellipse_7"
               data-name="Ellipse 7"
-              fill="#fff"
+              fill={`${testimonial == 2 ? "#707070" : "#fff"}`}
               stroke="#707070"
               stroke-width="1"
             >
