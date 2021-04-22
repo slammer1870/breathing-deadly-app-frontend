@@ -54,7 +54,7 @@ export default function Home() {
   };
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 150) {
+    if (touchStart - touchEnd < 150) {
       // do your stuff here for left swipe
       console.log("move right");
       if (testimonial < testimonials.length - 1) {
@@ -62,7 +62,7 @@ export default function Home() {
       } else setTestimonial(0);
     }
 
-    if (touchStart - touchEnd < 150) {
+    if (touchStart - touchEnd > 150) {
       // do your stuff here for right swipe
       console.log("move left");
       if (testimonial > 0) {
