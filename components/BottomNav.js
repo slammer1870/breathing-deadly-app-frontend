@@ -2,8 +2,10 @@ import Link from "next/link";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import SideMenu from "./SideMenu";
+import { useRouter } from "next/router";
 
-const BottomNav = ({ path }) => {
+
+const BottomNav = () => {
   const [active, setActive] = useState(false);
 
   const sideMenuActive = () => {
@@ -14,10 +16,13 @@ const BottomNav = ({ path }) => {
     }
   };
 
-  if (path != "/") {
+  const router = useRouter();
+
+  const path = router.pathname;
+
+  if (path != "/" && path != "/login" && path != "/signup") {
     return (
       <div className="w-screen h-20 flex p-6 justify-between items-center bg-opacity-90 bg-gray-700 lg:w-20 lg:h-screen lg:flex-col lg:justify-around bottom-0 fixed lg:h-screen lg:left-0 lg:top-0">
-        <SideMenu active={active} />
         <Link href="/articles">
           <a className={path == "/articles" ? "" : "opacity-30"}>
             <svg

@@ -43,7 +43,7 @@ const MyApp = ({ Component, pageProps }) => {
           >
             <Component {...pageProps} />
           </content>
-          <BottomNav path={path} />
+          <BottomNav />
         </main>
       </AuthProvider>
     </div>

@@ -20,6 +20,12 @@ const Navbar = ({ handleAccount }) => {
     }
   });
 
+  useEffect(() => {
+    if(active){
+      setActive(false)
+    }
+  },[])
+
   const handleMenu = () => {
     if (!active) {
       setActive(true);
@@ -30,8 +36,8 @@ const Navbar = ({ handleAccount }) => {
 
   if (home) {
     return (
-      <div className="w-screen flex flex-col top-0 fixed z-10 lg:px-20 p-6 bg-white shadow-md" >
-        <div className="h-22 w-full flex justify-between lg:pr-28">
+      <div className="w-screen flex flex-col top-0 fixed z-10 lg:px-20 p-4 bg-white shadow-md" >
+        <div className="h-22 w-full flex justify-between">
           <Link href="/">
             <a className="h-10 w-1/3">
               <Logo />
@@ -39,14 +45,14 @@ const Navbar = ({ handleAccount }) => {
           </Link>
           <div
             className={`${
-              !active ? "hidden" : ""
-            } flex pt-14 justify-center w-1/3`}
+              !active ? "hidden lg:flex" : "lg:flex"
+            } flex pt-14 md:pt-14 lg:pt-0 justify-center lg:justify-end w-1/3 lg:w-full`}
           >
-            {active && (
-              <ul>
-                <li className="justify-center flex my-2">What We Do</li>
-                <li className="justify-center flex my-2">Why Breathing?</li>
-                <li className="justify-center flex my-2">Our Clients</li>
+            {active ? (
+              <ul className="lg:flex lg:pt-0">
+                <li className="justify-center flex my-2 lg:mx-2"><a href="#whatwedo" onClick={handleMenu}>What We Do</a></li>
+                <li className="justify-center flex my-2 lg:mx-2"><a href="#whybreathing" onClick={handleMenu}>Why Breathing?</a></li>
+                <li className="justify-center flex my-2 lg:mx-2"><a href="#ourclients" onClick={handleMenu}>Our Clients</a></li>
                 <li>
                   {user ? (
                     <Link href="/articles">
@@ -66,12 +72,34 @@ const Navbar = ({ handleAccount }) => {
                   )}
                 </li>
               </ul>
-            )}
+            ) :  <ul className="lg:flex lg:pt-0">
+            <li className="justify-center flex my-2 lg:mx-2"><a href="#whatwedo" onClick={handleMenu}>What We Do</a></li>
+            <li className="justify-center flex my-2 lg:mx-2"><a href="#whybreathing" onClick={handleMenu}>Why Breathing?</a></li>
+            <li className="justify-center flex my-2 lg:mx-2"><a href="#ourclients" onClick={handleMenu}>Our Clients</a></li>
+            <li>
+              {user ? (
+                <Link href="/articles">
+                  <button className="mt-1 p-1 w-28 bg-indigo-400 text-white text-center rounded font-light">
+                    Dashboard
+                  </button>
+                </Link>
+              ) : (
+                <div className="flex">
+                  <Link href="/login">
+                    <button className="p-1 w-20 mt-1">Log In</button>
+                  </Link>
+                  <Link href="/signup">
+                    <button className="p-1 w-20 mt-1 bg-indigo-400 text-white text-center rounded font-light">Sign Up</button>
+                  </Link>
+                </div>
+              )}
+            </li>
+          </ul>}
           </div>
-          <div className="w-1/3 justify-end">
+          <div className="w-1/3 justify-end lg:hidden">
             <button
               onClick={handleMenu}
-              className="flex w-6 h-6 mt-2 ml-auto items-center lg:hidden"
+              className="flex w-6 h-6 mt-2 ml-auto items-center "
             >
               {!active ? (
                 <svg
@@ -145,7 +173,7 @@ const Navbar = ({ handleAccount }) => {
   }
 
   return (
-    <div className="w-screen flex justify-between items-center top-0 fixed lg:left-20 lg:pr-28 p-6 bg-white z-10 shadow-md" >
+    <div className={`w-screen flex justify-between items-center top-0 fixed ${ path != "/login" && path != "/signup" ? "lg:left-20 lg:pr-28" : "px-20"} p-4 bg-white z-10 shadow-md`} >
     <Link href="/">
         <a>
           <Logo />
@@ -172,7 +200,7 @@ const Navbar = ({ handleAccount }) => {
           </button>
         ) : (
           <Link href="/login">
-            <button className="border p-1 w-20">Log In</button>
+            <button className="border p-1 w-20 rounded">Log In</button>
           </Link>
         )}
       </div>
