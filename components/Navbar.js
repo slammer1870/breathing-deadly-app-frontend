@@ -21,9 +21,7 @@ const Navbar = ({ handleAccount }) => {
   });
 
   useEffect(() => {
-    if(active){
-      setActive(false)
-    }
+    closeMenu()
   },[])
 
   const handleMenu = () => {
@@ -34,12 +32,18 @@ const Navbar = ({ handleAccount }) => {
     }
   };
 
+  const closeMenu = () => {
+    if(active){
+      setActive(false)
+    }
+  }
+
   if (home) {
     return (
       <div className="w-screen flex flex-col top-0 fixed z-10 lg:px-20 p-4 bg-white shadow-md" >
         <div className="h-22 w-full flex justify-between">
-          <Link href="/">
-            <a className="h-10 w-1/3">
+          <Link href="/" >
+            <a className="h-10 w-1/3" onClick={closeMenu}>
               <Logo />
             </a>
           </Link>
@@ -175,7 +179,7 @@ const Navbar = ({ handleAccount }) => {
   return (
     <div className={`w-screen flex justify-between items-center top-0 fixed ${ path != "/login" && path != "/signup" ? "lg:left-20 lg:pr-28" : "px-20"} p-4 bg-white z-10 shadow-md`} >
     <Link href="/">
-        <a>
+        <a onClick={closeMenu}>
           <Logo />
         </a>
       </Link>
