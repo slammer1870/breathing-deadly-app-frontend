@@ -47,13 +47,18 @@ export default function Success() {
 
   useEffect(() => {
     if (order && !loading) {
-      router.push(`/courses/${order.course.slug}`);
+      if(order.course.slug){
+      router.push(`/courses/${order.course.slug}`);}
+      if(order.curriculum.id){
+        router.push(`/curriculums/${order.curriculum.id}`);
+      }
     }
   }, [order, loading]);
 
   return (
     <div className="flex flex-col justify-center items-center w-screen h-screen">
       <FontAwesomeIcon icon={faCircleNotch} size="6x" spin />
+      <h2></h2>
       {loading && (
         <h2 className="text-4xl mt-4 animate-pulse">
           Were confirming your purchase!

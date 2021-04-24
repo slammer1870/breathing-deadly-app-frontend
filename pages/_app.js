@@ -32,16 +32,18 @@ const MyApp = ({ Component, pageProps }) => {
       </Head>
       <AuthProvider>
         <main className="flex flex-col w-screen h-screen">
-          <nav className="top-0 fixed z-10 lg:px-20 w-screen">
-            <Navbar handleAccount={accountActive} />
-            <AccountMenu active={active} handleAccount={accountActive} />
-          </nav>
-          <content className="my-20 pb-20 lg:pl-20 lg:absolute lg:w-screen">
+          <Navbar handleAccount={accountActive} />
+          <AccountMenu active={active} handleAccount={accountActive} />
+          <content
+            className={`my-20 ${
+              path === "/"
+                ? ""
+                : "pb-20 lg:pb-0 lg:pl-20 lg:absolute lg:w-screen"
+            } `}
+          >
             <Component {...pageProps} />
           </content>
-          <nav className="bottom-0 fixed lg:h-screen lg:left-0 lg:top-0">
-            <BottomNav path={path} />
-          </nav>
+          <BottomNav />
         </main>
       </AuthProvider>
     </div>

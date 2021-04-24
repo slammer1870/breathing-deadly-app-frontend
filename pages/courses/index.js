@@ -1,10 +1,14 @@
 import { useRouter } from "next/router";
+import { useContext } from "react"
 import PropTypes from "prop-types";
 import BuyButton from "../../components/BuyButton";
 import CourseScroller from "../../components/CourseScroller";
+import AuthContext from "../../context/AuthContext"
 
 const Courses = ({ courses, categories }) => {
   const router = useRouter();
+
+  const { user } = useContext(AuthContext);
 
   const path = router.pathname;
   return (
@@ -34,7 +38,11 @@ const Courses = ({ courses, categories }) => {
                     key={course.id}
                   >
                     <CourseScroller course={course} />
-                    <BuyButton course={course} />
+                    {user ? (
+                      <BuyButton product={course} />
+                    ) : (
+                      <a href="/login" className="flex bg-blue-400 font-bold text-white w-full p-3 transition duration-300 ease-in-out hover:bg-blue-500 text-center justify-center items-center h-12 my-4">LOG IN TO BUY</a>
+                    )}
                   </div>
                 ))}
             </div>
@@ -61,7 +69,9 @@ export default Courses;
 export async function getStaticProps() {
   const [courses, categories] = await Promise.all([
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/courses/`).then((r) => r.json()),
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/course-categories/`).then((r) => r.json()),
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/course-categories/`).then((r) =>
+      r.json()
+    ),
   ]);
 
   return {

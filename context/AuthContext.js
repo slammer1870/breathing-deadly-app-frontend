@@ -15,7 +15,7 @@ export const AuthProvider = (props) => {
         try {
             await magic.auth.loginWithMagicLink({ email });
             setUser({ email });
-            router.push('/articles');
+            router.push('/');
         } catch (err) {
             setUser(null);
         }
@@ -40,7 +40,6 @@ export const AuthProvider = (props) => {
                 setUser({ email });
 
                 const token = await getToken()
-                //console.log("token is ", token)
             }
         } catch (err) {
             console.error(err.message);
