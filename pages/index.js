@@ -343,7 +343,7 @@ export default function Home() {
                 />
               </div>
               <div className="bg-indigo-50 p-6 -mt-20">
-                <p className="font-thin lg:text-md pt-20">
+                <p className="font-thin pt-20">
                   {testimonials[testimonial].review}
                 </p>
                 <h3 className="text-xl font-bold my-4">
@@ -406,7 +406,7 @@ export default function Home() {
                 />
               </div>
               <div className="bg-indigo-50 p-6 -mt-20 min-h-full relative">
-                <h3 className="text-2xl font-thin pt-20">
+                <h3 className="text-lg font-thin pt-20">
                   {testimonial.review}
                 </h3>
                 <div className="bottom-0 absolute">
