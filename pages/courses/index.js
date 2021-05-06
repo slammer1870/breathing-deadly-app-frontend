@@ -16,13 +16,8 @@ const Courses = ({ courses, categories }) => {
       <div className="flex flex-col p-6">
         <h1 className="text-4xl mb-4">Courses</h1>
         <p className="mb-4">
-          These courses are sample courses and the Stripe Checkout is in test
-          mode. If you wish to view a course you can make a test purchase by
-          using:
+          Here are our courses. Upon purchasing a course it will be added to your account and you will be able to view the content.
         </p>
-        <p className="mb-4">Card Number: 4242 4242 4242 4242</p>
-        <p className="mb-4">Expiration Date: 04/24</p>
-        <p className="mb-4">CCV: 442</p>
 
         {categories.map((category) => (
           <div className="overflow-y-hidden" key={category.id}>
