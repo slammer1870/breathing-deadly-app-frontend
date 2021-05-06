@@ -15,6 +15,16 @@ export default function Home() {
     loginUser(email);
   };
 
+  const [video, setVideo] = useState();
+
+  const handleVideo = () => {
+    if (!video) {
+      setVideo(true);
+    } else {
+      setVideo(false);
+    }
+  };
+
   const router = useRouter();
 
   const testimonials = [
@@ -74,7 +84,7 @@ export default function Home() {
           <h3 className="text-2xl lg:text-3xl font-thin text-center mt-6 mb-10">
             Change your breathing to change your life
           </h3>
-          <div className="bg-video bg-cover aspect-w-16 aspect-h-9 my-6">
+          <div className="bg-video bg-cover aspect-w-16 aspect-h-9 my-6" onClick={handleVideo}>
             <div className="bg-black w-full h-full bg-opacity-50 flex justify-center items-center mx-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -265,10 +275,11 @@ export default function Home() {
           </p>
           <div className="my-10">
             <Image
-              src="/screenshot.png"
+              src="/teaching.jpg"
               alt="Picture of the author"
               width={1920}
               height={1080}
+              objectFit="cover"
             />
           </div>
           <p class="leading-relaxed">
@@ -332,9 +343,9 @@ export default function Home() {
                 />
               </div>
               <div className="bg-indigo-50 p-6 -mt-20">
-                <h3 className="font-thin pt-20">
+                <p className="font-thin lg:text-md pt-20">
                   {testimonials[testimonial].review}
-                </h3>
+                </p>
                 <h3 className="text-xl font-bold my-4">
                   {testimonials[testimonial].name}
                 </h3>
@@ -411,6 +422,25 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {video && (
+        <div className="flex p-4 top-0 left-0 w-screen h-screen fixed bg-black bg-opacity-90 z-30 ">
+          <button
+            className="w-screen h-screen absolute"
+            onClick={handleVideo}
+          ></button>
+          <div className="w-full max-w-screen-md bg-white md:p-0 mx-auto my-auto z-20 relative">
+            <div class="aspect-w-16 aspect-h-9 mx-auto max-w-screen-md opacity-100">
+              <iframe
+                src="https://www.youtube.com/embed/qsBi_N_0xu0"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      )}
 
       <footer>
         <div class="bg-gray-200">
