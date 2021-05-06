@@ -19,24 +19,18 @@ export default function Home() {
 
   const testimonials = [
     {
-      thumbnail: "/profile-pic.png",
+      thumbnail: "/darragh-testimonial.jpg",
       review:
-        "“Breathing Deadly is like the digital equivalent of a mechanical ventilator.",
-      name: "Sam Mc Nally",
-      occupation: "Web Developer",
+        '"As a professional athlete I have used many methods throughout my career to prevent and rehabilitate injuries. Working with Chris has opened my mind and changed how I think about the body, the core and the breath.\nSimple yet incredibly effective exercises, explained thoroughly. What I have learnt has become part of my daily routine and something I am sure I will continue for the rest of my life."',
+      name: "Darragh OConaill",
+      occupation: "BJJ Black Belt",
     },
     {
-      thumbnail: "/testimonial-photo1.png",
+      thumbnail: "/shane-testimonial.jpg",
       review:
-        "I was diagnosed with a herniated disc in my lower back. After months of excruciating pain I opted to have lower back surgery and began my road to recovery.",
-      name: "Nam Mc Sally",
+        '"For me the best thing about all the exercises Chris has me doing is that most can easily be incorporated into your day to day life. Some you can even do while waiting waiting for the kettle to boil. Others you can do just sitting in a chair.\nThe few exercises i have learned are just the tip of iceberg and I can’t wait to keep doing more sessions and learning more. Its a whole new way of thinking about how the body moves and how important breathing is."',
+      name: "Shane Murray",
       occupation: "Sample Occupation",
-    },
-    {
-      thumbnail: "/testimonial-photo2.png",
-      review: "I like leaving reviews on things, thanks for reading.",
-      name: "Joeseph Bloggs",
-      occupation: "Professional Reviewer",
     },
   ];
 
@@ -326,23 +320,25 @@ export default function Home() {
           onTouchEnd={() => handleTouchEnd()}
         >
           <div className="relative w-full">
-            <div className="flex flex-col bg-white m-4">
-              <div className="flex justify-center">
+            <div className="flex flex-col bg-white m-4 z-0">
+              <div className="flex justify-center ">
                 <Image
                   src={testimonials[testimonial].thumbnail}
                   width={160}
                   height={160}
-                  className="rounded-full"
+                  className="rounded-full z-10"
+                  objectFit="cover"
+                  objectPosition="center"
                 />
               </div>
               <div className="bg-indigo-50 p-6 -mt-20">
-                <h3 className="text-2xl font-thin pt-20">
+                <h3 className="font-thin pt-20">
                   {testimonials[testimonial].review}
                 </h3>
-                <h3 className="text-2xl font-bold my-4">
+                <h3 className="text-xl font-bold my-4">
                   {testimonials[testimonial].name}
                 </h3>
-                <h3 className="text-2xl font-light my-4">
+                <h3 className="text-xl font-light my-4">
                   {testimonials[testimonial].occupation}
                 </h3>
               </div>
@@ -384,23 +380,6 @@ export default function Home() {
                 <circle cx="11" cy="11" r="10.5" fill="none" />
               </g>
             </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="22"
-              height="22"
-              viewBox="0 0 22 22"
-            >
-              <g
-                id="Ellipse_7"
-                data-name="Ellipse 7"
-                fill={`${testimonial == 2 ? "#707070" : "#fff"}`}
-                stroke="#707070"
-                stroke-width="1"
-              >
-                <circle cx="11" cy="11" r="11" stroke="none" />
-                <circle cx="11" cy="11" r="10.5" fill="none" />
-              </g>
-            </svg>
           </div>
         </div>
         <div className="lg:flex max-w-screen-xl mx-auto justify-center hidden p-6">
@@ -412,6 +391,7 @@ export default function Home() {
                   width={160}
                   height={160}
                   className="rounded-full z-10"
+                  objectFit="cover"
                 />
               </div>
               <div className="bg-indigo-50 p-6 -mt-20 min-h-full relative">

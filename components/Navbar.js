@@ -40,7 +40,7 @@ const Navbar = ({ handleAccount }) => {
 
   if (home) {
     return (
-      <div className="w-screen flex flex-col top-0 fixed z-10 lg:px-20 p-4 bg-white shadow-md">
+      <div className="w-screen flex flex-col top-0 fixed z-20 lg:px-20 p-4 bg-white shadow-md">
         <div className="h-22 w-full flex justify-between">
           <Link href="/">
             <a className="h-10 w-1/3" onClick={closeMenu}>
@@ -59,7 +59,7 @@ const Navbar = ({ handleAccount }) => {
                     What We Do
                   </a>
                 </li>
-                <li className="justify-center flex my-2 lg:mx-2">
+                <li className="justify-center w-max flex my-2 lg:mx-2">
                   <a href="#whybreathing" onClick={handleMenu}>
                     Why Breathing?
                   </a>
