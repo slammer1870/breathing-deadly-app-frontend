@@ -21,8 +21,8 @@ const Navbar = ({ handleAccount }) => {
   });
 
   useEffect(() => {
-    closeMenu()
-  },[])
+    closeMenu();
+  }, []);
 
   const handleMenu = () => {
     if (!active) {
@@ -33,16 +33,16 @@ const Navbar = ({ handleAccount }) => {
   };
 
   const closeMenu = () => {
-    if(active){
-      setActive(false)
+    if (active) {
+      setActive(false);
     }
-  }
+  };
 
   if (home) {
     return (
-      <div className="w-screen flex flex-col top-0 fixed z-10 lg:px-20 p-4 bg-white shadow-md" >
+      <div className="w-screen flex flex-col top-0 fixed z-10 lg:px-20 p-4 bg-white shadow-md">
         <div className="h-22 w-full flex justify-between">
-          <Link href="/" >
+          <Link href="/">
             <a className="h-10 w-1/3" onClick={closeMenu}>
               <Logo />
             </a>
@@ -54,9 +54,21 @@ const Navbar = ({ handleAccount }) => {
           >
             {active ? (
               <ul className="lg:flex lg:pt-0">
-                <li className="justify-center flex my-2 lg:mx-2"><a href="#whatwedo" onClick={handleMenu}>What We Do</a></li>
-                <li className="justify-center flex my-2 lg:mx-2"><a href="#whybreathing" onClick={handleMenu}>Why Breathing?</a></li>
-                <li className="justify-center flex my-2 lg:mx-2"><a href="#ourclients" onClick={handleMenu}>Our Clients</a></li>
+                <li className="justify-center flex my-2 lg:mx-2">
+                  <a href="#whatwedo" onClick={handleMenu}>
+                    What We Do
+                  </a>
+                </li>
+                <li className="justify-center flex my-2 lg:mx-2">
+                  <a href="#whybreathing" onClick={handleMenu}>
+                    Why Breathing?
+                  </a>
+                </li>
+                <li className="justify-center flex my-2 lg:mx-2">
+                  <a href="#ourclients" onClick={handleMenu}>
+                    Our Clients
+                  </a>
+                </li>
                 <li>
                   {user ? (
                     <Link href="/articles">
@@ -70,35 +82,53 @@ const Navbar = ({ handleAccount }) => {
                         <button className="p-1 w-20 mt-1">Log In</button>
                       </Link>
                       <Link href="/signup">
-                        <button className="p-1 w-20 mt-1 bg-indigo-400 text-white text-center rounded font-light">Sign Up</button>
+                        <button className="p-1 w-20 mt-1 bg-indigo-400 text-white text-center rounded font-light">
+                          Sign Up
+                        </button>
                       </Link>
                     </div>
                   )}
                 </li>
               </ul>
-            ) :  <ul className="lg:flex lg:pt-0">
-            <li className="justify-center flex my-2 lg:mx-2"><a href="#whatwedo" onClick={handleMenu}>What We Do</a></li>
-            <li className="justify-center flex my-2 lg:mx-2"><a href="#whybreathing" onClick={handleMenu}>Why Breathing?</a></li>
-            <li className="justify-center flex my-2 lg:mx-2"><a href="#ourclients" onClick={handleMenu}>Our Clients</a></li>
-            <li>
-              {user ? (
-                <Link href="/articles">
-                  <button className="mt-1 p-1 w-28 bg-indigo-400 text-white text-center rounded font-light">
-                    Dashboard
-                  </button>
-                </Link>
-              ) : (
-                <div className="flex">
-                  <Link href="/login">
-                    <button className="p-1 w-20 mt-1">Log In</button>
-                  </Link>
-                  <Link href="/signup">
-                    <button className="p-1 w-20 mt-1 bg-indigo-400 text-white text-center rounded font-light">Sign Up</button>
-                  </Link>
-                </div>
-              )}
-            </li>
-          </ul>}
+            ) : (
+              <ul className="lg:flex lg:pt-0">
+                <li className="justify-center flex my-2 lg:mx-2">
+                  <a href="#whatwedo" onClick={handleMenu}>
+                    What We Do
+                  </a>
+                </li>
+                <li className="justify-center flex my-2 lg:mx-2">
+                  <a href="#whybreathing" onClick={handleMenu}>
+                    Why Breathing?
+                  </a>
+                </li>
+                <li className="justify-center flex my-2 lg:mx-2">
+                  <a href="#ourclients" onClick={handleMenu}>
+                    Our Clients
+                  </a>
+                </li>
+                <li>
+                  {user ? (
+                    <Link href="/articles">
+                      <button className="mt-1 p-1 w-28 bg-indigo-400 text-white text-center rounded font-light">
+                        Dashboard
+                      </button>
+                    </Link>
+                  ) : (
+                    <div className="flex">
+                      <Link href="/login">
+                        <button className="p-1 w-20 mt-1">Log In</button>
+                      </Link>
+                      <Link href="/signup">
+                        <button className="p-1 w-20 mt-1 bg-indigo-400 text-white text-center rounded font-light">
+                          Sign Up
+                        </button>
+                      </Link>
+                    </div>
+                  )}
+                </li>
+              </ul>
+            )}
           </div>
           <div className="w-1/3 justify-end lg:hidden">
             <button
@@ -177,36 +207,42 @@ const Navbar = ({ handleAccount }) => {
   }
 
   return (
-    <div className={`w-screen flex justify-between items-center top-0 fixed ${ path != "/login" && path != "/signup" ? "lg:left-20 lg:pr-28" : "px-20"} p-4 bg-white z-10 shadow-md`} >
-    <Link href="/">
-        <a onClick={closeMenu}>
-          <Logo />
-        </a>
-      </Link>
-      <div>
-        {user ? (
-          <button href="#" onClick={handleAccount}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="29"
-              height="29"
-              viewBox="0 0 16 16"
-              className="mt-1"
-            >
-              <path
-                id="Union_5"
-                data-name="Union 5"
-                d="M0,370v-2c0-2.2,3.6-4,8-4s8,1.8,8,4v2Zm4-12a4,4,0,1,1,4,4A4,4,0,0,1,4,358Z"
-                transform="translate(0 -354)"
-                fill="#2e2e2e"
-              />
-            </svg>
-          </button>
-        ) : (
-          <Link href="/login">
-            <button className="border p-1 w-20 rounded">Log In</button>
-          </Link>
-        )}
+    <div
+      className={`w-screen flex justify-between items-center top-0 fixed ${
+        path != "/login" && path != "/signup" ? "lg:left-20 lg:pr-28" : "lg:px-20"
+      } p-4 bg-white z-10 shadow-md`}
+    >
+      <div className="h-22 w-full flex justify-between">
+        <Link href="/">
+          <a onClick={closeMenu}>
+            <Logo />
+          </a>
+        </Link>
+        <div>
+          {user ? (
+            <button href="#" onClick={handleAccount}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="29"
+                height="29"
+                viewBox="0 0 16 16"
+                className="mt-1"
+              >
+                <path
+                  id="Union_5"
+                  data-name="Union 5"
+                  d="M0,370v-2c0-2.2,3.6-4,8-4s8,1.8,8,4v2Zm4-12a4,4,0,1,1,4,4A4,4,0,0,1,4,358Z"
+                  transform="translate(0 -354)"
+                  fill="#2e2e2e"
+                />
+              </svg>
+            </button>
+          ) : (
+            <Link href="/login">
+              <button className="border p-1 w-20 rounded">Log In</button>
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );

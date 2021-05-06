@@ -18,7 +18,7 @@ export default function LogIn() {
   const router = useRouter();
 
   return (
-    <div className="container h-full flex items-center justify-center m-auto">
+    <div className="container h-full flex items-center justify-center m-auto p-6">
       <form onSubmit={handleSubmit} className="my-20 max-w-screen-lg">
         <div className="animate-pulse flex justify-center">
           <Lungs/>

@@ -53,7 +53,7 @@ export default function Home() {
   };
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd < 250) {
+    if (touchStart - touchEnd < 75) {
       // do your stuff here for left swipe
       console.log("move right");
       if (testimonial < testimonials.length - 1) {
@@ -61,7 +61,7 @@ export default function Home() {
       } else setTestimonial(0);
     }
 
-    if (touchStart - touchEnd > 250) {
+    if (touchStart - touchEnd > 75) {
       // do your stuff here for right swipe
       console.log("move left");
       if (testimonial > 0) {
@@ -133,11 +133,11 @@ export default function Home() {
       <section className="bg-purple-50">
         <div className="p-6 max-w-screen-sm mx-auto">
           {user ? (
-              <Link href="/articles">
-                <a className="bg-indigo-400 text-white text-center p-2 rounded my-6 text-3xl font-light block">
-                  Dashboard
-                </a>
-              </Link>
+            <Link href="/articles">
+              <a className="bg-indigo-400 text-white text-center p-2 rounded my-6 text-3xl font-light block">
+                Dashboard
+              </a>
+            </Link>
           ) : (
             <div className="flex flex-col">
               <Link href="/login">
@@ -168,11 +168,14 @@ export default function Home() {
               <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
                 <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
                   <h2 class="font-medium title-font text-gray-900 mb-4 text-xl">
-                    Articles
+                    ASSESS
                   </h2>
                   <p class="leading-relaxed">
-                    We have a selection of articles that explain our approach to
-                    our breathing techniques.
+                    Using a combination of methods, we assess clients movement,
+                    their strengths and weaknesses - just like any other
+                    trainer. Where we hope to set ourselves apart is in
+                    assessing the breath, its mechanics, and its affect on the
+                    whole musculoskeletal system.
                   </p>
                 </div>
               </div>
@@ -185,11 +188,14 @@ export default function Home() {
               <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
                 <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
                   <h2 class="font-medium title-font text-gray-900 mb-4 text-xl">
-                    Courses
+                    CONSULT
                   </h2>
                   <p class="leading-relaxed">
-                    Our courses are designed to guide you through your breathing
-                    journey with high quality video tutorials
+                    We work with coaches and trainers from all disciplines, it
+                    has been our experience that this work is beneficial for
+                    athletes, rehabilitation patients and everyone in between.
+                    If you are a physio, coach, personal trainer or similar -
+                    dont hesitate to get in touch to level up your training!
                   </p>
                 </div>
               </div>
@@ -202,11 +208,37 @@ export default function Home() {
               <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
                 <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
                   <h2 class="font-medium title-font text-gray-900 mb-4 text-xl">
-                    Curriculums
+                    PROGRAM
                   </h2>
                   <p class="leading-relaxed">
-                    Looking for personal coaching? We 1:1 coaching over Zoom
-                    with personalised video curriculums.
+                    We provide customised and detailed exercise programs,
+                    centred usually around breathing and its mechanisms. On
+                    demand video tutorials and support are available any time.
+                    Our programs are suitable for all ages, and all levels,
+                    whether you are an athlete in the top of your field, a rehab
+                    patient or someone simply a deeper understanding of the
+                    breath and its fundamentals - we have something for you!
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
+              <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
+                <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+              </div>
+              <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-indigo-400 text-white relative title-font font-medium text-sm"></div>
+              <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
+                <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
+                  <h2 class="font-medium title-font text-gray-900 mb-4 text-xl">
+                    TEAMS
+                  </h2>
+                  <p class="leading-relaxed">
+                    With many workplaces closed, and team sports on hold due the
+                    lockdowns, we have enjoyed sharing our work online with
+                    teams and groups of all kinds. We have provided seminars for
+                    corporate teams, martial arts clubs, sports teams and small
+                    private groups. Contact us today to get your club Breathing
+                    Deadly!
                   </p>
                 </div>
               </div>
@@ -215,19 +247,27 @@ export default function Home() {
         </div>
       </section>
       <section className="bg-purple-50 py-20" id="whybreathing">
-        <div className="p-6 max-w-screen-sm mx-auto">
+        <div className="p-6 max-w-screen-lg mx-auto">
           <h3 className="text-4xl font-regular text-center mb-10">
             Why Breathing?
           </h3>
           <p class="leading-relaxed">
-            Hi, I’m Chris 👋. I have spent the majority of my adult life
-            training and coaching Brazilian Jiu Jitsu.
+            Hi, I’m Chris 👋. I'm a Brazilian Jiu Jitsu Black belt, a coach, and
+            personal trainer, and I have been involved in sports as an athlete,
+            coach, and everything in between since I was a schoolboy.
           </p>
           <p class="leading-relaxed pt-4">
-            After 10+ years of training I received my Black Belt and my health
-            was good until one day after years of training and some neglect of
-            the more important aspects of recovery, the adversity I had put my
-            body through finally caught up with me
+            Like many people, my adult years were sprinkled with weeks or months
+            of intermittent back pain, that through a combination of stretching,
+            resting, hanging, foam rolling - was never a real cause for concern,
+            everyone has a sore lower back right?!?!
+          </p>
+          <p class="leading-relaxed pt-4">
+            So what was so special about 2019? Why all of a sudden, did the
+            stretches, the foam rolling and the rest stop working? Was it a bad
+            deadlift in the gym that set this off? Did I herniate my disc in Jiu
+            Jitsu class? Well, the answer to that question is exactly what
+            brought me to these methods and to creating this page!
           </p>
           <div className="my-10">
             <Image
@@ -238,19 +278,40 @@ export default function Home() {
             />
           </div>
           <p class="leading-relaxed">
-            I was diagnosed with a herniated disc in my lower back. After months
-            of excruciating pain I opted to have lower back surgery and began my
-            road to recovery.
+            Months before my pain began, my father passed away, and a long term
+            relationship broke down unexpectedly, I was stressed, depressed, and
+            lonely. Unknowingly, my breathing rate was changing, I was
+            overstimulating my sympathetic (fight or flight) nervous system, my
+            sleep quality was abysmal. Unlucky as I was to experience all of
+            this in close succession, it led me to connect with some incredibly
+            smart, and generous coaches and therapists.
           </p>
           <p class="leading-relaxed pt-4">
-            It was during this time that I met a man called David Grey who began
-            to educate me on the biomechanics of breathing and the perpetual
-            reliance our body has on our ability to work the muscles around our
-            lungs and ribcage and how that affects the rest of our mobility
+            Through a personalised rehab process, I was slowly exposed the idea
+            that the shapes my body was taking as I inhaled, the areas that
+            expanded, the areas that didn’t, the muscles used to pull and push
+            air in and out - all of these things, had a massive impact on my
+            posture, and my movement. I recognised these things as not just the
+            remedy to my issues, but likely the cause!
+          </p>
+          <p class="leading-relaxed pt-4">
+            It was around this time that my coaches instincts kicked in, I have
+            always made it my business to further my education and training to
+            better service my students, and what I have learned since hurting my
+            back juuuust about makes the whole thing worth it! This is breath
+            work like you have never seen before, this is core training like you
+            have never seen before.
+          </p>
+          <p class="leading-relaxed pt-4">
+            My goal is to work with you and give you the tools and the education
+            to properly service your body from home, all sessions are carefully
+            tailored with your speficic goal in mind. Are you a runner, hoping
+            to improve your resiporatry rate during training and events?
           </p>
           <p class="leading-relaxed py-4">
-            It is these lessons that I will be sharing with you here at
-            Breathing Deadly.
+            A tired parent in need of a good nights sleep? A breath work student
+            from another discipline? Or like I was, are you suffering from back
+            pain? Lets get to work today, I look forward to our first session!
           </p>
         </div>
       </section>
