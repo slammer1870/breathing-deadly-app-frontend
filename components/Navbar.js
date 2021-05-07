@@ -53,13 +53,13 @@ const Navbar = ({ handleAccount }) => {
             } flex pt-14 md:pt-14 lg:pt-0 justify-center lg:justify-end w-1/3 lg:w-full`}
           >
             {active ? (
-              <ul className="lg:flex lg:pt-0">
+              <ul className="text-center lg:flex lg:pt-0">
                 <li className="justify-center flex my-2 lg:mx-2">
                   <a href="#whatwedo" onClick={handleMenu}>
                     What We Do
                   </a>
                 </li>
-                <li className="justify-center w-max flex my-2 lg:mx-2">
+                <li className="justify-center flex my-2 lg:mx-2">
                   <a href="#whybreathing" onClick={handleMenu}>
                     Why Breathing?
                   </a>
